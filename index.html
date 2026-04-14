@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <title>Parrocchia di Pandino</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Erica+One&family=Parisienne&family=Notable&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_circle_up" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <style>
+        :root {
+            --primary-color: #2c3e50; 
+            --accent-color: #d4af37;  
+            --blue-side: #e0eef5;
+            --cream-side: #FFFDD0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(
+                to right,
+                var(--cream-side) 0%,
+                var(--cream-side) 50%,
+                var(--blue-side) 50%,
+                var(--blue-side) 100%
+            );
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .masterheader {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: white;
+            padding: 15px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logos {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .logos img {
+            height: 60px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+
+        .hero-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 40px;
+        }
+
+        .phrase h3 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: #2d5061;
+        }
+
+        .phrase p {
+            font-family: "Parisienne", cursive;
+            font-size: clamp(3rem, 10vw, 5rem);
+            color: #B6AE21;
+            margin: -10px 0;
+        }
+
+        .phrase-effetto {
+            background: white;
+            padding: 15px 45px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transform: rotate(-2deg);
+            transition: 0.3s;
+            margin-bottom: 40px;
+        }
+
+        .phrase-effetto:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .phrase-effetto h2 {
+            font-family: "Notable", cursive;
+            font-size: 2.2rem;
+            color: #B6AE21;
+            text-transform: uppercase;
+        }
+
+        .cards-wrapper {
+            position: absolute;
+            top: 600px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 5%;
+            gap: 40px;
+        }
+
+        .iniziative,
+        .foto {
+            width: 45%;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .iniziative h2,
+        .foto h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .iniziative p,
+        .foto p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .iniziative img,
+        .foto img {
+            width: 60%;
+            border-radius: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .iniziative img:hover,
+        .foto img:hover {
+            transform: scale(1.05);
+        }
+
+        .orari-messe {
+            padding: 50px 20px;
+            max-width: 840px;
+            margin: 700px auto 0;
+            color: #2c3e50;
+        }
+
+        .orari-messe h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 2rem;
+            letter-spacing: 0.04em;
+        }
+
+        .orari-messe h3 {
+            margin: 30px 0 12px;
+            font-size: 1.2rem;
+            color: #34495e;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .orari-messe table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 18px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .orari-messe th,
+        .orari-messe td {
+            padding: 16px 18px;
+        }
+
+        .orari-messe th {
+            background: var(--primary-color);
+            color: white;
+            font-weight: 700;
+            text-align: left;
+            font-size: 0.98rem;
+            letter-spacing: 0.04em;
+        }
+
+        .orari-messe td {
+            border-top: 1px solid #edf2f7;
+            font-size: 0.98rem;
+            color: #455a64;
+            line-height: 1.5;
+        }
+
+        .orari-messe tr:nth-child(even) td {
+            background: #f7fbff;
+        }
+
+        .orari-messe tr:hover td {
+            background: #eef6fb;
+        }
+
+        .orari-messe table + table {
+            margin-top: 12px;
+        }
+
+        .notizie-carousel {
+            padding: 50px 30px;
+            max-width: calc(100vw - 60px);
+            margin: 50px 30px 0;
+            color: #2c3e50;
+        }
+
+        .notizie-carousel h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            font-size: 2rem;
+            letter-spacing: 0.04em;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .notizia {
+            min-width: 100%;
+            padding: 40px 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(248,249,250,0.9) 100%);
+        }
+
+        .notizia::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="%23e0eef5" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="%23e0eef5" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="%23FFFDD0" opacity="0.1"/><circle cx="10" cy="50" r="0.5" fill="%23FFFDD0" opacity="0.1"/><circle cx="90" cy="50" r="0.5" fill="%23FFFDD0" opacity="0.1"/><circle cx="50" cy="90" r="0.5" fill="%23FFFDD0" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .notizia > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .notizia h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.6rem;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .notizia p {
+            color: #455a64;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            max-width: 600px;
+        }
+
+        .notizia .data {
+            font-size: 0.95rem;
+            color: #7f8c8d;
+            font-weight: 500;
+            background: rgba(212, 175, 55, 0.1);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .carousel-controls button {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid var(--accent-color);
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            cursor: pointer;
+            pointer-events: all;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .carousel-controls button:hover {
+            background: white;
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .carousel-controls button::before {
+            content: '‹';
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .carousel-controls button.next::before {
+            content: '›';
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 3;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px solid var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: var(--accent-color);
+            transform: scale(1.2);
+        }
+
+        .vedi-tutte {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .vedi-tutte button {
+            background: linear-gradient(135deg, var(--accent-color) 0%, #c4a02f 100%);
+            color: white;
+            border: none;
+            padding: 16px 35px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .vedi-tutte button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .vedi-tutte button:hover::before {
+            left: 100%;
+        }
+
+        .vedi-tutte button:hover {
+            background: linear-gradient(135deg, #c4a02f 0%, var(--accent-color) 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            color:black;
+            border-radius: 100%;
+            width: clamp(10px, 3vw, 50px);
+            height: clamp(10px, 3vw, 50px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgb(0, 0, 0);
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        .scroll-to-top:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 900px) {
+            .cards-wrapper {
+                position: static;
+                flex-direction: column;
+                padding: 0 20px;
+                margin-top: 40px;
+            }
+
+            .iniziative,
+            .foto {
+                width: 100%;
+            }
+
+            .orari-messe {
+                margin: 40px auto 0;
+            }
+
+            .notizie-carousel {
+                padding: 30px 20px;
+                margin: 30px 20px 0;
+                max-width: calc(100vw - 40px);
+            }
+
+            .notizia {
+                padding: 25px 20px;
+            }
+
+            .notizia h3 {
+                font-size: 1.4rem;
+            }
+
+            .carousel-controls button {
+                width: 45px;
+                height: 45px;
+            }
+
+            .carousel-controls button::before {
+                font-size: 1.8rem;
+            }
+
+            .carousel-controls {
+                display: none;
+            }
+        }
+        footer {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 60px 5% 20px;
+    margin-top: 80px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section h2 {
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+.footer-section p, .footer-section li {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #ecf0f1;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    transition: color 0.3s;
+}
+
+.footer-section .contact-link:hover {
+    color: var(--accent-color);
+}
+
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    height: 200px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.copyright {
+    text-align: center;
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.8rem;
+    color: #bdc3c7;
+}
+
+        @media (max-width: 600px) {
+            .masterheader {
+                flex-direction: column;
+                padding: 10px;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                gap: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .nav-links li a {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<div class="scroll-to-top">
+    
+
+<a  href="#"><span class="material-symbols-outlined">
+arrow_circle_up
+</span></a></div>
+<body>
+
+<header class="masterheader">
+    <div class="logos">
+        <img src="https://chiesapandino.it/wp-content/uploads/2020/05/logo_cdp_90.png">
+        <img src="https://chiesapandino.it/wp-content/uploads/2020/05/logo_oratorio_90.png">
+    </div>
+
+    <nav>
+        <ul class="nav-links">
+            <li><a href="#orari-messe">Orari Messe</a></li>
+            <li><a href="#notizie">Notizie</a></li>
+            <li><a href="#storia">Storia</a></li>
+            <li><a href="#contatti">Contatti</a></li>
+        </ul>
+    </nav>
+</header>
+
+<main class="hero-container">
+
+    <section class="phrase">
+        <h3>Una comunità</h3>
+        <p>viva nel cuore</p>
+        <h3>di Pandino</h3>
+    </section>
+
+    <section class="phrase-effetto">
+        <h2>l'Oratorio siamo Noi!</h2>
+    </section>
+
+    <div class="cards-wrapper">
+
+        <section class="iniziative">
+            <h2>Iniziative</h2>
+            <p>Scopri tutte le attività e gli eventi organizzati dall'Oratorio di Pandino.</p>
+            <a href="https://giin.chiesapandino.it" target="_blank">
+                <img src="https://chiesapandino.it/wp-content/uploads/2020/05/btn-iscriviti.png">
+            </a>
+        </section>
+
+        <section class="foto">
+            <h2>Fotografie</h2>
+            <p>Guarda tutte le fotografie degli eventi dell'Oratorio.</p>
+            <a href="https://chiesapandino.it/foto/">
+                <img src="https://i.ibb.co/60B3Pc3Q/89d0c5.png">
+            </a>
+        </section>
+
+    </div>
+
+</main>
+
+<section class="orari-messe" id="orari-messe">
+
+    <h2>Orari Messe</h2>
+
+    <h3>Giorni feriali (ora solare)</h3>
+    <table>
+        <tr><th>Giorno</th><th>Orario</th><th>Luogo</th><th>Note</th></tr>
+        <tr><td>Tutti i feriali</td><td>08:30</td><td>Chiesa Parrocchiale</td><td>Ordinaria</td></tr>
+        <tr><td>Tutti i feriali</td><td>17:30</td><td>Chiesa Parrocchiale</td><td>Ordinaria</td></tr>
+        <tr><td>Tutti i feriali</td><td>20:30</td><td>Santuario</td><td>Ordinaria</td></tr>
+        <tr><td>Martedì</td><td>08:30</td><td>Chiesa Parrocchiale</td><td>Per benefattori defunti; altre Messe sospese</td></tr>
+    </table>
+
+    <table>
+        <tr><th>Periodo</th><th>Variazione</th></tr>
+        <tr><td>Inverno</td><td>Celebrazioni in S. Marta</td></tr>
+        <tr><td>Estate (21 giugno – 21 settembre)</td><td>Sospesa la Messa delle 17:30; mercoledì 20:30 al Cimitero</td></tr>
+    </table>
+
+    <h3>Giorni festivi</h3>
+    <table>
+        <tr><th>Giorno</th><th>Luogo</th><th>Orario</th></tr>
+        <tr><td>Sabato</td><td>Santuario</td><td>18:00</td></tr>
+        <tr><td>Domenica</td><td>Chiesa Parrocchiale</td><td>08:30, 10:00, 11:15, 18:00</td></tr>
+    </table>
+
+</section>
+
+<section class="notizie-carousel" id="notizie">
+    <h2>Notizie</h2>
+
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="notizia">
+                <h3>Festa dell'Oratorio 2024</h3>
+                <p>Grande successo per la festa annuale dell'Oratorio di Pandino. Centinaia di partecipanti hanno vissuto momenti di gioia e condivisione.</p>
+                <div class="data">15 Luglio 2024</div>
+            </div>
+            <div class="notizia">
+                <h3>Nuovo Progetto Giovani</h3>
+                <p>L'Oratorio lancia un nuovo progetto dedicato ai giovani con attività sportive e formative per il prossimo anno.</p>
+                <div class="data">3 Agosto 2024</div>
+            </div>
+            <div class="notizia">
+                <h3>Celebrazione del Santo Patrono</h3>
+                <p>Preparativi in corso per la celebrazione del Santo Patrono con processioni e eventi speciali.</p>
+                <div class="data">20 Settembre 2024</div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button onclick="prevSlide()"></button>
+            <button class="next" onclick="nextSlide()"></button>
+        </div>
+        <div class="carousel-indicators">
+            <div class="indicator active" onclick="goToSlide(0)"></div>
+            <div class="indicator" onclick="goToSlide(1)"></div>
+            <div class="indicator" onclick="goToSlide(2)"></div>
+        </div>
+    </div>
+
+    <div class="vedi-tutte">
+        <button onclick="window.open('https://chiesapandino.it/news/', '_blank')">Vedi Tutte le Notizie</button>
+    </div>
+</section>
+
+<script>
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.notizia');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+        const carousel = document.getElementById('carousel');
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+        
+        // Aggiorna indicatori
+        indicators.forEach((indicator, i) => {
+            indicator.classList.toggle('active', i === index);
+        });
+    }
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+        showSlide(currentSlide);
+    }
+
+    function goToSlide(index) {
+        currentSlide = index;
+        showSlide(currentSlide);
+    }
+
+    // Auto-slide ogni 6 secondi
+    setInterval(nextSlide, 6000);
+
+    // Pausa auto-slide su hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+    });
+    carouselContainer.addEventListener('mouseleave', () => {
+        autoSlideInterval = setInterval(nextSlide, 6000);
+    });
+
+    let autoSlideInterval = setInterval(nextSlide, 6000);
+</script>
+<footer>
+    <div class="footer-content" id="contatti">
+        <div class="footer-section">
+            <h2>Parrocchia di Pandino</h2>
+            <p>Piazza Vittorio Emanuele III, 1<br>
+               26025 Pandino (CR)</p>
+            <br>
+            <p>Unità Pastorale di Pandino e Nosadello</p>
+        </div>
+
+        <div class="footer-section">
+            <h2>Contatti</h2>
+            <ul>
+                <li>
+                    <a href="tel:037390173" class="contact-link">
+                        <span class="material-symbols-outlined">phone</span>
+                        0373 90173
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:info@chiesapandino.it" class="contact-link">
+                        <span class="material-symbols-outlined">email</span>
+                        info@chiesapandino.it
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h2>Dove siamo</h2>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d385.5501217930904!2d9.55048196690125!3d45.40310328032437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781316f14da40e5%3A0xd03841f93260dbb!2sOratorio%20San%20Luigi!5e0!3m2!1sit!2sit!4v1776196045391!5m2!1sit!2sit" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright">
+        &copy; 2026 Parrocchia Santa Margherita - Pandino. Tutti i diritti riservati.
+    </div>
+</footer>
+</body>
+</html>
