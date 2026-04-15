@@ -204,6 +204,7 @@
 
         .orari-messe table {
             width: 100%;
+            max-width: 400px;
             border-collapse: collapse;
             background: white;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
@@ -212,9 +213,33 @@
             margin-bottom: 24px;
         }
 
+        img,
+        iframe,
+        .orari-messe table {
+            max-width: 100%;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .orari-messe table {
+            width: 100%;
+            max-width: 100%;
+            table-layout: fixed;
+            word-break: break-word;
+        }
+
         .orari-messe th,
         .orari-messe td {
             padding: 16px 18px;
+            word-break: break-word;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
         }
 
         .orari-messe th {
@@ -473,6 +498,8 @@
 
             .orari-messe {
                 margin: 40px auto 0;
+                padding: 40px 20px;
+                max-width: 100%;
             }
 
             .notizie-carousel {
@@ -500,6 +527,36 @@
 
             .carousel-controls {
                 display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            html,
+            body {
+                overflow-x: hidden;
+            }
+
+            body {
+                min-width: 0;
+            }
+
+            .masterheader,
+            .nav-links,
+            .cards-wrapper,
+            .orari-messe,
+            .notizie-carousel,
+            .footer-content {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .orari-messe table {
+                margin-bottom: 20px;
+            }
+
+            .orari-messe th,
+            .orari-messe td {
+                padding: 14px 12px;
             }
         }
         footer {
@@ -656,7 +713,7 @@ arrow_circle_up
     <table>
         <tr><th>Periodo</th><th>Variazione</th></tr>
         <tr><td>Inverno</td><td>Celebrazioni in S. Marta</td></tr>
-        <tr><td>Estate (21 giugno – 21 settembre)</td><td>Sospesa la Messa delle 17:30; mercoledì 20:30 al Cimitero</td></tr>
+        <tr><td>Estate (21 giugno - 21 settembre)</td><td>Sospesa la Messa delle 17:30; mercoledì 20:30 al Cimitero</td></tr>
     </table>
 
     <h3>Giorni festivi</h3>
