@@ -780,12 +780,11 @@ arrow_circle_up
     const slides = document.querySelectorAll('.notizia');
     const indicators = document.querySelectorAll('.indicator');
     const totalSlides = slides.length;
+    let autoSlideInterval;
 
     function showSlide(index) {
         const carousel = document.getElementById('carousel');
         carousel.style.transform = `translateX(-${index * 100}%)`;
-        
-        // Aggiorna indicatori
         indicators.forEach((indicator, i) => {
             indicator.classList.toggle('active', i === index);
         });
@@ -806,22 +805,15 @@ arrow_circle_up
         showSlide(currentSlide);
     }
 
-    // Auto-slide ogni 6 secondi
-    setInterval(nextSlide, 6000);
-
-    // Pausa auto-slide su hover
-    const carouselContainer = document.querySelector('.carousel-container');
-    carouselContainer.addEventListener('mouseenter', () => {
-        clearInterval(autoSlideInterval);
-    });
-    carouselContainer.addEventListener('mouseleave', () => {
+    function startAutoSlide() {
         autoSlideInterval = setInterval(nextSlide, 6000);
-    });
+    }
 
-    let autoSlideInterval = setInterval(nextSlide, 6000);
-    carouselContainer.addEventListener('mouseenter' () => claearInterval(autoSlideInterval));
-    carouselContainer.addEventListener('mouseleave' () => autoSlideInterval = (nextSlide, 6000));
-    
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+    carouselContainer.addEventListener('mouseleave', () => startAutoSlide());
+
+    startAutoSlide();
 </script>
 <footer>
     <div class="footer-content" id="contatti">
