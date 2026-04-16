@@ -818,6 +818,9 @@ arrow_circle_up
     });
 
     let autoSlideInterval = setInterval(nextSlide, 6000);
+    carouselContainer.addEventListener('mouseenter' () => claearInterval(autoSlideInterval));
+    carouselContainer.addEventListener('mouseleave' () => autoSlideInterval = (nextSlide, 6000));
+    
 </script>
 <footer>
     <div class="footer-content" id="contatti">
